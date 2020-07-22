@@ -1,0 +1,95 @@
+Thread
+	1개의 프로세스에 의하여 처리되는 독립적인 처리 단위
+
+멀티 쓰레드 : 쓰레드 2개 이상을 구동 시키는 행위	
+
+랜덤 값과 현재 시각 출력
+RandomCreator
+	1부터 45까지의 숫자 중 임의의 정수를 100번 출력하기
+	
+UserCalendar
+		
+ThreadEx01(메인)
+	UserCalendar 클래스를 사용하여 현재 시각 출력하기
+	현재 시각 : 오전 10시 22분 35초
+
+쓰레드 구현 절차
+1) Thread 클래스를 상속받는 사용자 정의 클래스 구현
+2) run() 메소드를 오버라이딩한다.
+3) 1)에 대한 객체 생성
+4) start() 메소드를 호출한다.
+
+Runnable 인터페이스를 상속 받는 경우의 처리 방법
+	RunnableEx mrun = new RunnableEx();
+	Thread th = new Thread(mrun) ;
+	th.start();
+
+
+run() 메소드
+	개발자와 cpu와의 약속 장소 
+	할 일을 여기에 명시한다.
+	
+start() 메소드
+	개발자가 cpu에게 알려 주는 역할
+
+
+ThreadEx
+	Thread를 상속 받는다.
+	3초 간격으로 100번만 현재 시각을 출력한다.
+
+RunnableEx
+	Runnable 인터페이스를 상속받아서 처리해본다.
+	String[] arr = {"카라", "빅뱅", "이효리", "이문세"};
+	2초 간격으로 100번만 배열 요소의 임의의 요소를 출력한다.
+	
+ThreadTest(메인)
+
+통장 임계 영역 만들기
+동일한 통장에 대하여 남편 김철수와 아내 박영희가 돈을 인출하려고 한다.
+인출시 잔액이 부족하면 프로그램을 종료하도록 한다.
+
+ATM.java
+SynchronizedEx.java
+
+임계 영역
+	여러 개의 쓰레드가 동시에 구현되었을 때, 다른 쓰레드의 간섭을 받지 않고
+	단독으로 수행되고자 하는 메소드
+	
+	메소드 이름 앞에 synchronized 키워드를 명시하면 된다.
+
+확장(향상된) for
+	배열이나 컬렉션의 요소들을 하나씩 추출하기 위한 기법
+	
+구문
+	for(타입 단수이름 : 복수이름){...}
+	
+ExtendFor.java	
+
+MySet.java
+
+
+1부터 10까지의 정수 중에서 짝수만을 저장하는 even이라는 Set 객체를 만드세요.
+3의 배수만을 저장하는 three라는 Set 객체를 만드세요.
+
+합집합 : even ∪ three (2, 3, 4, 6, 8, 9, 10)
+교집합 : even ∩ three (6)
+차집합 : even - three (2, 4, 8, 10)
+
+MakeSet.java
+
+StringTokenizer 클래스
+	문자열을 토큰으로 분리해주는 클래스
+	
+Token : 작은 절편(조각)	
+delimiter : 문자열을 분리하기 위한 키(문자)
+
+
+
+
+
+
+
+
+
+
+
