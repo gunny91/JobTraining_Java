@@ -1,0 +1,4 @@
+Jeccy/Woman/90.0/30.0/
+Joel/Man/130.0/43.3/
+Tiga/Woman/200.0/66.7/
+Miga/Man/120.0/40.0/
