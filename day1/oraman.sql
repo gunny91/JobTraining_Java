@@ -7,7 +7,7 @@
 -- member : ID, name, age, entry date
 
 create table members01(
-    id varchar2(15), -- character is using varchar2(15-> ÀÚ¸®¼ö)
+    id varchar2(15), -- character is using varchar2(15-> ìë¦¬ìˆ˜)
     name varchar2(100),
     age number,
     hire_date date    
@@ -44,8 +44,13 @@ describe members02;
 
 
 -- add data
+<<<<<<< HEAD
 insert into members03 values('kim','±èÃ¶¼ö',30,'20/07/27');
 insert into members03 values('Park','¹Ú¿µÈÖ',30,'20/07/27');
+=======
+insert into members03 values('kim','ê¹€ì² ìˆ˜',30,'20/07/27');
+insert into members03 values('Park','ë°•ì˜íœ˜',30,'20/07/27');
+>>>>>>> 18848b4637965d1d68b288688a06b2ad01bf02e5
 commit;
 
 describe members03;
