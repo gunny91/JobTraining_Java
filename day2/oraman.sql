@@ -124,6 +124,32 @@ where age <100;
 select * from members04;
 rollback;
 
+--as a number, we can calcuate it
+update members04 set age=age+3;
+select * from members04;
+
+-- delete from where ;
+--ID park delete
+-- id park and age 400
+--id park or kim delete
+
+delete from members04 
+where id = 'Park'; 
+select * from members04;
+rollback;
+
+delete from members04 where id ='park' or age = 30;
+select * from members04;
+rollback;
+
+delete from members04 where id ='park' or id ='kim';
+select * from members04;
+
+delete from members04 where id in('park', 'kim');
+select * from members04;
+rollback;
+
+
 --name 'NAm' or age is 30 --> change their hire_date as 20/11/11
 update members04 set hire_date = '20/11/11'
 where (age =30) or(name ='NAm');
@@ -131,6 +157,34 @@ where (age =30) or(name ='NAm');
 select * from members04;
 rollback;
 
+--sequence : number auto generate
+--page primary key 
+--      not for certain table
+--      When it is not used, the number will perished.        
+
+
+--sequence gap
+--create sequence sequenceName
+create sequence seq01;
+select * from seq;
+--pseudo column
+    --nextval : select nect sequence
+     --curral : current sequence number check
+ --dual table
+        --owner :Sys
+        --simeple math operation, function test, sequence 
+        
+    select 5*5*5 from dual;
+    select power(2,10) from dual;
+    select seq01.nextval from dual;
+        select seq01.currval from dual;
+ 
+ rollback;
+ 
+ 
+ 
+ 
+ 
 
 
 
