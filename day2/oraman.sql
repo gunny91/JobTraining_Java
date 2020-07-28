@@ -181,10 +181,131 @@ select * from seq;
  
  rollback;
  
+ --create table, use seq to add data
+ -- number, writer, title
+ create table boards(no number primary key, writer varchar2(30), subject varchar2(30));
+
+--seqboard.nextval
+-- sequence for board
+create sequence seqboard; 
+
+select * from boards;
+desc boards;
  
+alter table boards modify(subject varchar2(255));
+
+commit;
+insert into boards(no, writer, subject)
+values(seqboard.nextval,'Hing GillDOng','Fun article'); 
  
+ insert into boards(no, writer, subject)
+values(seqboard.nextval,'Hing GillDOng','Not Fun article'); 
+
+ insert into boards(no, writer, subject)
+values(seqboard.nextval,'Park YonghHee','Awesome article'); 
+
  
- 
+ desc boards;
+select * from boards;
+
+--dql : can search data --> select
+-- select :mark column
+--from  :mark searching table
+--[where] :filtering condition 
+--[group by] : grouping with specific area 
+--[having]   : filtering condition at group by
+--[order by] : sorting
+-- * all columns 
+
+select * from members04;
+
+select name , age from members04;
+select hire_date,name , age from members04;
+
+--Distinct --> show the not repeated data
+select name from members04;
+select distinct name from members04;
+
+-- alias L column's name's  
+select name, age from members04;
+-- OriginalName [as] another name
+select name as 性名, age 歲 from members04;
+
+select name, age, age+5 as "5 years later" from members04;
+
+-- null : unknown value , cannot comprare it
+-- null = null ->> unknown
+--3*5+2 = 17 ,,, 3*5+ null ->> unknown
+        -- every result of null is null need to compare with is null 
+        --    
+select * from members04 where  hire_date = null; 
+select * from members04 where  hire_date is null; 
+
+
+-- || 문자열 연결 연산자
+-- age is 10
+select name || '의 나이는' || age || '살 입니다.' as 결과
+from members04;
+
+-- 이름 홍길동, 입사일자 : 20/12/25
+
+select '이름 :'|| name || ', 입사 일자 : ' ||hire_date as 결과 from members04;
+
+
+--sorting
+--order sorting (ascending): 1, 2, 3 ... A, B ,C ...
+select * from members04 order by name [asc];
+
+
+select * from members04 order by name [desc];
+
+-- name asc , age desc
+select * from members04 order by name asc, age desc;
+
+-- : = > <>
+-- in keyword : or operation
+-- is null : null checking
+--mod (a,b) a %b
+
+--age 3's time 
+
+select * from members04 where mod(age, 3) !=0;
+
+--between A and B : Over A and below B
+select * from members04 where age between 20 and 100;
+
+
+--lke sentence : patern matching
+
+--wild card  _  ->> one character 1 , % more than 0 string
+
+-- where name like '%수' : '수'으로 끝나는
+-- where name like '박%' : '박'으로 시작하는
+-- where name like '%순%' : '순' 자가 포함
+-- where name like '_형' : 두글자 이면서 두번째 글짜가 '형'인 항목
+
+
+-- 이름 중에 'kim' 글자 포함
+select * from members04 where name like '%철%';
+-- 이름 중에 '수'끝나는
+select * from members04 where name like '%수';
+
+-- 성이 '김'씨
+select * from members04 where name like '김%';
+
+--두번째 글자가 '철' 인 사람
+select * from members04 where name like '_철%';
+
+-- is !null  <-->is not null
+-- in  <----> not in
+-- like <----> not like
+-- between A and B <----> not between A and B
+
+
+
+
+
+
 
 
 
