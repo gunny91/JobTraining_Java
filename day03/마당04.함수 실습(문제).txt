@@ -1,0 +1,72 @@
+books 테이블
+-- 반드시 instr 함수를 사용하여 책의 이름에 '축구'라는 단어가 들어있는 행만 조회하세요.
+select instr(bookname,'축구') from books;
+
+-- 책의 아이디가 3의 배수인 행들만 조회해 보세요.
+select bookname, bookid from books
+where mod(bookid,3) =0;
+
+
+-- 반드시 concat 함수를 사용하여 다음 예시와 같이 출력되도록 하세요.
+-- 제목 : 축구의 역사, 출판사 : 굿스포츠
+select concat('제목: ',bookname)||', ' || concat('출판사 :',publisher) from books;
+
+
+
+
+-- 주소 컬럼에서 국가 이름만 출력해 보세요.
+select substr(address ,1,2) 
+from members;
+
+
+-- lpad 함수를 사용하여 price 컬럼을 전체 10자리 형식으로 맟추세요.
+-- 모자란 공간은 '*' 기호로 채우도록 하세요.
+select lpad(price,10 ,'*') from books;
+
+
+-- price 컬럼의 값과 (책이름의 문자열 길이)의 제곱 값을 더한 결과를 출력해보세요.
+-- 예를 들어서 price=1000이고, 책이름이 "축구의 역사"(6자리)이면 36이므로 최종 결과는 1036이 된다.
+
+select price + power(length(publisher),2) from books;
+
+members 테이블
+
+-- 반드시 instr 함수를 사용하여 전화 번호에 '6000'이 들어 있는 행만 조회해 보세요.
+select instr(phone, '0001')>0 from members;
+
+
+-- 주소지의 문자열 길이가 8이상인 행만 조회해 보세요.
+select address from members
+where length(address) >=8;
+
+
+-- substr 함수를 사용하여, 성씨를 제외하고, 이름만 추출해 보세요.
+select substr(name,2) from members;
+
+
+orders 테이블
+-- 아래의 실습을 하기 위하여 다음 문장을 수행하세요.
+update orders set saleprice = null  where orderid in(1, 3, 5) ;
+update orders set orderdate = null  where orderid in(1, 2, 3) ;
+commit ; 
+
+-- orders 테이블에 대하여 다음과 같은 요구 사항을 만족하도록 조회해 보세요.
+-- custid 컬럼과 case 구문을 사용하여 고객 아이디와 이름을 출력해 보세요.
+-- 단, 판매가가, 존재하지 않으면 10000원으로 출력하세요.
+-- 판매가는 21000일때, \21,000.00의 형식으로 출력하세요. 
+-- 단, 주문 일자가, 존재하지 않으면 현재 시각으로 출력하세요.
+-- 주문 일자는 '2014年 07月 13日'의 형식으로 출력하세요.
+
+
+alter session set nls_date_format = 'yyyy"년年" mm"月" dd"日"';
+--select to_char(saleprice, '99,999.00') from orders;
+select sysdate, to_char(sysdate, 'yyyy"년年" mm"月" dd"日"') from orders;
+SELECT to_char(NVL(saleprice,'1000'), 'l99,999.00') ,NVL(orderdate,sysdate ),custid,
+case 
+    when custid =1  or saleprice is  null or orderdate is  null then '박지성'  
+    when custid =2 or saleprice is  null or orderdate is  null then '김연아'
+    when custid =3 or saleprice is  null or orderdate is  null then '장미란'
+    when custid =4 or saleprice is  null or orderdate is  null then '추신수'
+    else 'etc' 
+end as result
+from orders;
