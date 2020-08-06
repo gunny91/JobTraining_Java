@@ -1,8 +1,31 @@
 html + JS + CSS
 
-html : content
+	* html : content	
 
-JS : Java Script
+	* JS : Java Script (Sign in check)
 
-CSS3 : Make up the style (font size, color, high light)
+	* CSS3 : Make up the style (font size, color, high light)
+
+	* JQuery : JS with CSS combination --> make it as library frame work
+		--> dealing with event, data control (read, search, write), etc...
+
+	* JQueryMobile, jQueryUI --> plug in
+	
+	* BootStrap
+		Twitter Fram work
+		It is based on jQuery
+	
+
+	Main tag : form, table, a tag
+
+
+form tag : 양식을 만들어준다 (Make a form)
+	양식(resume, sign in, user info revision)
+	
+
+table tag : Similar as make table (like an exel)
+
+
+a(anker) tag : help to make a link
+
 
