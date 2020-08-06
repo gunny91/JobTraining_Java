@@ -28,4 +28,12 @@ table tag : Similar as make table (like an exel)
 
 a(anker) tag : help to make a link
 
+form tag
+	- method: parameter (get/post)
+	- action : Submit button click after move to page
 
+<input> tag :
+	- name : Parametor (data name)
+	- type : input form's type
+	
+writer: <input name="Myname" type="text"/>
