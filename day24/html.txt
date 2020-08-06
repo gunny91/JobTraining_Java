@@ -1,0 +1,8 @@
+html + JS + CSS
+
+html : content
+
+JS : Java Script
+
+CSS3 : Make up the style (font size, color, high light)
+
