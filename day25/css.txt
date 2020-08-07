@@ -47,8 +47,36 @@ Box Model!!! BOM(Box Object Model)
 	border : Around (content + padding) area
 	Margin : surrounded between all 
 
-
-
-
+	margin : 1px (4 direction) ㅁ
+	margin : 1px 2px (up down -> 1px, left right 2px)
+	margin : 1px ,2px ,3px, 4px -> Start from top to clock wise.
 	
+
+
+*id selector & class selector (csstest02.jsp)
+
+class selector 
+	can select more than 2 classes to use same style
+	using (.) to using it
+	Can have more than 2 class name for one atiribute
+	class-"my home"
+	
+id selector 
+	Only one style
+	using sharp(#) 
+
+a[title^="제과"]  --> ^= start from
+a[title$="기능사"]  $= include it after $
+a[title*="산업기사"  *= include it
+
+link : The link of begging
+visited : the state that visited or not
+hover : mouse in + mouse out
+active : clicked 
+
+focus : focusing selector
+
+
+
+
 	
