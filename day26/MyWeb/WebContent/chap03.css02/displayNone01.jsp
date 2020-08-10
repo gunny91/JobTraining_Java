@@ -24,6 +24,7 @@
 				padding-top:20px;
 				line-height:200%;
 			}
+			
 			li{
 				text-decoration: none;
 			}
