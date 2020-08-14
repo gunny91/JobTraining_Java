@@ -1,0 +1,141 @@
+SQL Practice
+
+sqlplus / as sysdba
+
+alter user HR account unlock;
+
+sqlplus hr/password
+
+select tname 
+from tab; //get the table name
+
+select desc hr;
+
+select first_name || last_name as 'F name'
+from employees 
+where employee_id =101;
+
+select first_name || last_name as "Get Name" 
+from employees 
+where department_id=30 and salary<10000;
+
+select first_name || last_name ，salary, department_id
+from employees 
+where department_id=30 and salary<10000 or department_id=60 and salary < 1000;
+
+select employee_id, first_name ||last_name as "Get Name"
+from employees 
+where employee_id between 110 and 130;
+
+select employee_id,first_name ||last_name as "Get Name"
+from employees 
+where employee_id =30 or department_id=60 or department_id=90;
+
+select employee_id, first_name || last_name as "Get Name"
+from employees 
+where employee_id in(30,60,90);
+
+select department_id, first_name from employees
+where department_id not in(30,60,90) 
+order by department_id asc ;
+
+select department_id, first_name from employees
+where not department_id in(30,60,90) 
+order by department_id asc ;
+
+select employee_id, phone_number 
+from employees
+where phone_number like '5_5%';
+
+
+select e.employee_id, d.department_id, d.department_name
+from employees e join departments d on e.department_id = d.department_id;
+
+select e.employee_id, d.department_id, d.department_name
+from employees e , departments d , jobs job 
+where e.department_id = d.department_id;
+
+select e.employee_id, d.department_id, d.department_name, e.job_id, j.job_title
+from employees e , departments d , jobs j 
+where e.department_id = d.department_id
+and e.job_id =j.job_id;
+
+Get the employee's info , also get who is his or her superviser -->
+
+
+
+decode(expr, search1, result1, ..., default result)
+select employee_id, first_name || ' ' || last_name name, 
+decode(round((sysdate - hire_date)/365), 5,'5 Years Straight', 
+			10,'10 years Straight', round((sysdate - hire_date)/365)) workingYears
+from employees order by employee_id;
+
+
+case when compare1 then process1
+	  compare2 then process2
+	.........
+	else default
+end
+
+[search]
+case    when compare condition1 then process1
+         when compare condition 2 then process2
+	-------
+	else default
+end
+
+desc departments;
+
+-- inlinew view
+it uses for sub-quoery
+--view collect datas from tables. And show it as table 
+
+select a.employee_id, a.first_name || ' ' || a.last_name, a.salary
+from employees a
+where a.salary >= (select avg(salay) from employees) 
+and a.salary <= (select max(salary) from employees)
+order by a.salary desc;
+
+
+select a.employee_id, a.first_name || ' ' || a.last_name, 
+        a.salary round, (b.avgs), b.maxs
+from employees a, 
+     (select avg(salary) avgs, max(salary) maxs from employees) b
+where a.salary between b.avgs and b.maxs
+order by a.salary desc;
+
+
+
+select a.employee_id, a.first_name || ' ' || a.last_name, 
+        a.salary round, (b.avgs), b.maxs
+from employees a, 
+     (select avg(salary) avgs, max(salary) maxs from employees) b
+where a.salary between b.avgs and b.maxs
+order by a.salary desc;
+
+select sum(m1) "Jan", sum(m2) "Feb",sum(m3) "Mar",sum(m4) "APR", sum(m5) "MAY",sum(m6) "JUN",sum(m7) "JUL", sum(m8) "AUG",sum(m9) "SEP",sum(m10) "OCT",sum(m11) "NOV",sum(m12) "DEC"
+from
+(select
+decode(to_char(hire_date,'mm'), '01', count(*), 0) m1,
+decode(to_char(hire_date,'mm'), '02', count(*), 0) m2,
+decode(to_char(hire_date,'mm'), '03', count(*), 0) m3,
+decode(to_char(hire_date,'mm'), '04', count(*), 0) m4,
+decode(to_char(hire_date,'mm'), '05', count(*), 0) m5,
+decode(to_char(hire_date,'mm'), '06', count(*), 0) m6,
+decode(to_char(hire_date,'mm'), '07', count(*), 0) m7,
+decode(to_char(hire_date,'mm'), '08', count(*), 0) m8,
+decode(to_char(hire_date,'mm'), '09', count(*), 0) m9,
+decode(to_char(hire_date,'mm'), '10', count(*), 0) m10,
+decode(to_char(hire_date,'mm'), '11', count(*), 0) m11,
+decode(to_char(hire_date,'mm'), '12', count(*), 0) m12
+from employees
+where to_char(hire_date,'mm') between '01' and '12'
+group by to_char(hire_date,'mm')
+order by to_char(hire_date,'mm'));
+
+
+
+
+
+
+
