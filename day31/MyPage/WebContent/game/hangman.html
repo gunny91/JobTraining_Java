@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Hang Man</title>
+	<style>
+		.letters{
+			position: absolute;
+			left: 0px;
+			top:0px;
+			border:2px;
+			border-style:double;
+			margin:5px;
+			padding:5px;
+			color:pink;
+			background-color: #d8f;
+			font-family: "Courier New", courier, monospace;
+		}
+		
+		.blanks{
+			position: absolute;
+			left: 0px;
+			top:0px;
+			border:none;
+		
+			margin:5px;
+			padding:5px;
+			color:black;
+			background-color: white;
+			font-family: "Courier New", courier, monospace;
+			text-decoration:underline;
+		}
+	</style>
+	
+	<!--  defer is thing to import the external file -->
+	<script src="words1.js" defer></script>
+	
+	<script>
+		var context; //point to canvas
+		var thingelem; //store the variable
+		var alphabet="abcdefghijklnmopqrstuvwxyz";
+		var alphabetY =300; //all alphabet location of y
+		var alphabetX =20; ///first alphabet
+		var alphabetWidth =25;
+		var secretWords; //Question store variable
+		var guessCount =0;
+		
+		var secretWordX =160;
+		var secretWordY =50;
+		var secretwidth =50;
+		
+		var gallowscolor ="brown";
+		var facecolor="red";
+		var bodycolor ="tan";
+		var noosecolor="#F60";
+		var bodycenterX=70;
+		
+		var steps=[
+				drawgallows,
+				drawhead,
+				drawbody,
+				drawrightarm,
+				drawleftarm,
+				drawrightleg,
+				drawleftleg,
+				drawnoose
+			];
+		var cur=0; //steps arry's next 
+				
+		function drawgallows(){
+			//context=document.getElementById('canvas').getContext('2d');
+			context.lineWidth=8; // line length
+			context.strokStyle=gallowscolor; //color
+			context.beginPath();
+			context.moveTo(2,180); //move from fist location
+			context.lineTo(40,180); //draw a line
+			context.moveTo(20,180); //middle
+			context.lineTo(20,40);
+			context.moveTo(2,40); //upper part
+			context.lineTo(80,40);
+			context.stroke(); //draw all 
+			context.closePath(); // close the path
+		}
+		
+		function drawhead(){
+			//context=document.getElementById('canvas').getContext('2d');
+			context.lineWidth=3;
+			context.strokeStyle=facecolor;
+			context.save();
+			context.scale(.6,1); // size adjustment;
+			context.beginPath();
+			context.arc(bodycenterX/0.6, 80, 10,Math.PI*2,false);
+			context.stroke();
+			context.closePath();
+		}
+		
+		function drawbody(){
+			//context=document.getElementById('canvas').getContext('2d');
+			context.strokeStyle=bodycolor;
+			context.beginPath();
+			context.moveTo(bodycenterX,90);
+			context.lineTo(bodycenterX,125);
+			context.stroke();
+			context.closePath();
+		}
+		
+		function drawrightarm(){
+			//context=document.getElementById('canvas').getContext('2d');
+			context.beginPath();
+			context.moveTo(bodycenterX,100);
+			context.lineTo(bodycenterX+20,110);
+			context.stroke();
+			context.closePath();
+		}
+		
+		function drawleftarm(){
+			//context=document.getElementById('canvas').getContext('2d');
+			context.beginPath();
+			context.moveTo(bodycenterX,100);
+			context.lineTo(bodycenterX-20,110);
+			context.stroke();
+			context.closePath();
+		}
+		
+		function drawleftleg(){
+			//context=document.getElementById('canvas').getContext('2d');
+			context.beginPath();
+			context.moveTo(bodycenterX,125);
+			context.lineTo(bodycenterX-10,155);
+			context.stroke();
+			context.closePath();
+		}
+		
+		function drawrightleg(){
+			//context=document.getElementById('canvas').getContext('2d');
+			context.beginPath();
+			context.moveTo(bodycenterX,125);
+			context.lineTo(bodycenterX+10,155);
+			context.stroke();
+			context.closePath();
+		}
+		
+		function drawnoose(){
+			context=document.getElementById('canvas').getContext('2d');
+			context.strokeStyle=noosecolor;
+			context.beginPath();
+			context.moveTo(bodycenterX-10,40);
+			context.lineTo(bodycenterX+5,95);
+			context.stroke();
+			context.closePath();
+			context.save();
+			contect.scale(1,0.3);
+			context.beginPath();
+	
+			context.arc(bodycenterX,95/0.3, 80,Math.PI*2,false);
+			context.stroke();
+			context.closePath();
+			context.restore();
+			drawneck();
+			drawhead();
+		}
+		
+		function drawneck(){
+			
+			context.strokeStyle=bodycolor;
+			context.beginPath();
+			context.moveTo(bodycenterX,90);
+			context.lineTo(bodycenterX,95);
+			context.stroke();
+			context.closePath();
+		}
+		function setupgame()
+		{
+			var i, // using at loop
+				x, // using at x aix
+				y; // using at y aix
+			var uniqueid; // new HTML element
+			var an = alpahbet.length;
+			for(i =0; i < an; i++){
+				uniqueid = "a"+String(i); //generate the  id
+				d = document.createElement('alphabet');
+				
+				d.innerHTML=(
+					"<div class='letters' id='" +uniqueid+"'>" +alphabet[i]+"</div>");
+					//<div class='letters' id=;uniqueid> alphabet[i]</div>
+					document.body.appendChild(d);
+				
+			}
+		}
+		
+		function init(){
+			context = document.getElementById('canvas').getContext('2d');
+			setupgame(); //call game setup function
+			context.font="bold 20pt Arial"; //Set font options
+			
+		}
+	</script>
+</head>
+<body onLoad="init()">
+	<h1>Hang man</h1>
+	<br>
+	<p>
+		<canvas id="canvas" width="600" height="400">
+		
+		</canvas>
+		<alphabet></alphabet>
+
+</body>
+</html>
