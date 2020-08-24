@@ -1,0 +1,82 @@
+Color expression
+
+#RRGGBB red,grean,blue(0~255) each of place, we are using 16
+	An RGB color value is specified with: rgb(red, green, blue).
+	Each parameter (red, green, and blue) defines the intensity of the color as an integer between 0 and 255.
+	For example, rgb(0, 0, 255) is rendered as blue, 
+	because the blue parameter is set to its highest value (255) and the others are set to 0.
+
+
+CSS(Cascading Style Sheet)
+	Make up style at HTML
+	
+	How to do?
+	1. inline style
+		put the atiribute value at style
+	(./../webContenct/chap02.css/inlineEx01.jsp)
+	<head>
+		<style>
+			dosomething{}
+		</style>
+	</head>
+	
+	
+	style="atributeName:value1;atributeName2:value12;"
+	style="font-size:12px;color:#006699"
+	
+	2. External css style
+	Using <link> </link> tag
+	
+	<link rel ="stylesheet" type="text/css" href="mystyle.css">
+	
+	
+	csstest01.jsp
+	
+	
+	
+Selector
+	Make CSS's style's objective
+
+ex)
+	selectorName{ }
+
+
+Box Model!!! BOM(Box Object Model)
+	content : the content of value
+	padding : space btween border
+	border : Around (content + padding) area
+	Margin : surrounded between all 
+
+	margin : 1px (4 direction) ㅁ
+	margin : 1px 2px (up down -> 1px, left right 2px)
+	margin : 1px ,2px ,3px, 4px -> Start from top to clock wise.
+	
+
+
+*id selector & class selector (csstest02.jsp)
+
+class selector 
+	can select more than 2 classes to use same style
+	using (.) to using it
+	Can have more than 2 class name for one atiribute
+	class-"my home"
+	
+id selector 
+	Only one style
+	using sharp(#) 
+
+a[title^="제과"]  --> ^= start from
+a[title$="기능사"]  $= include it after $
+a[title*="산업기사"  *= include it
+
+link : The link of begging
+visited : the state that visited or not
+hover : mouse in + mouse out
+active : clicked 
+
+focus : focusing selector
+
+
+
+
+	

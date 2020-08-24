@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+body{
+		background-color:green;
+		margin-top:50px;
+	
+}
+
+
+h1{
+	color:red;
+	font-family:Geneva,sans-serif;
+	font-size:36px;
+	text-align:center;
+	
+	
+}
+
+p{
+	color:white;
+	font-family:Geneva,sans-serif;
+	font-size:25px;
+}

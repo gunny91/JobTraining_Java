@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+
+#sub_img{
+	width: 971px;
+	height:179px;
+	background-image:url(../images/company/sub_back.png);
+	background-repeat: no-repeat;
+	background-position: left top;
+}
+
+/*Left Menu*/
+#sub_menu{
+	width:238px; 
+	float:left; 
+	margin:20px; 
+	font-family: verdana, geneva, sans-serif; 
+	font-size: 1em;
+}
+
+#sub_menu ul{
+	margin:20px 0 0 10px;
+	/*border:1px solid #ccc;*/
+	list-style:none;
+}
+
+#sub_menu a{
+	text-decoration: none; 
+	color: #666; 
+	display: block;
+	width:150px; 
+	height:15px;
+	padding:7px;
+	border-bottom-width:1px;
+	border-bottom-style: dotted;
+	border-bottom-color:#999;
+	background-image: url(../images/bullet.gif);
+	background-repeat: no-repeat;
+	background-position: right center;
+	}
+	
+#sub_menu a:hover{
+	background-image:url../images/bullet_orange.gif);
+	background-repeat:no-repeat;
+	background-position:right center;
+	color:#f90;	
+}
+
+/*Company contents*/
+article{
+	float:right;
+	width:660px;
+	padding-right:30px;
+	font-family: verdana, geneva,sans-serif;
+	line-height: 1.5em;
+	/*border: 1px solid #ccc;*/
+}
+article h1{
+
+	 font-family:"Times new roman",times,serif;
+	 font-size:45px;
+	 color:#ccc; 
+	 margin :20px 0; 
+	 font-weight:normal;
+}
+
+article p{
+	padding-left:10px;
+}
+
+figure.ceo{
+	float: right;
+	margin:5px;
+	
+}
+
+figcaption{
+	text-align:center;
+	color:#39f;
+}
